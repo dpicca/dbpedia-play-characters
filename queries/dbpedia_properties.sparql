@@ -1,0 +1,18 @@
+PREFIX dbc: <http://dbpedia.org/resource/Category:>
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbr: <http://dbpedia.org/resource/>
+
+SELECT DISTINCT ?x ?p
+WHERE {
+  {
+     ?x a dbo:FictionalCharacter
+  } UNION {
+     ?x ^dbo:series [] # Literary series centered on a character e.g. Sherlock Holmes
+  } UNION {
+     ?x  dc:subject/skos:broader* dbc:Fictional_characters
+  } UNION {
+	 ?x a dbo:Person
+	  ; dbo:creator [] # This property usually goes together with the category
+  }
+  ?x ?p ?o.
+}

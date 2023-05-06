@@ -1,0 +1,30 @@
+PREFIX wdp: <http://www.wikidata.org/prop/direct/>
+PREFIX wde: <http://www.wikidata.org/entity/>
+
+SELECT DISTINCT ?xlabel ?worktitle ?olabel ?name ?x ?work ?author ?original WHERE {
+  { ?x (wdp:P31/wdp:P279*) wde:Q95074. }
+  UNION
+  {
+    ?x wdp:P1074 _:b0.
+    _:b0 wdp:P31 wde:Q5.
+  }
+  UNION
+  {
+    ?x ^wdp:P674 _:b1.
+    _:b1 wdp:P31 wde:Q47461344.
+  }
+  ?x wdp:P1441 ?work.
+  ?x rdfs:label ?xlabel.
+  FILTER((LANG(?xlabel)) = "en")
+  OPTIONAL{
+  ?work rdfs:label ?worktitle.
+  FILTER((LANG(?worktitle)) = "en")
+   }.
+  OPTIONAL{
+  ?work wdp:P50 ?author.
+  ?author rdfs:label ?name .
+   FILTER((LANG(?name)) = "en")
+   }.
+}
+
+

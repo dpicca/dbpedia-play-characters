@@ -1,0 +1,12 @@
+appdirs
+psutil
+requests
+urllib3
+SPARQLWrapper
+stanfordnlp
+spacy
+numpy
+pandas
+matplotlib
+Wikidata
+seaborn

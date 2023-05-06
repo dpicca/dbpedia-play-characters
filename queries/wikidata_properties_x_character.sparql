@@ -1,0 +1,16 @@
+PREFIX wdp: <http://www.wikidata.org/prop/direct/>
+PREFIX wde: <http://www.wikidata.org/entity/>
+
+SELECT DISTINCT ?x_label ?x ?p_label ?p
+WHERE {
+	{ # Is a (subclass of?) fictional character
+	  ?x wdp:P31/wdp:P279* wde:Q95074
+	} UNION {
+	  # Fictional analog of a human
+	  ?x wdp:P1074 [ wdp:P31 wde:Q5 ]
+	} UNION {
+	  # Character in a written work
+	  ?x ^wdp:P674 [ wdp:P31 wde:Q47461344 ]
+	}
+    ?x ?p ?o.
+}

@@ -1,0 +1,26 @@
+PREFIX dbo: <http://dbpedia.org/ontology/>
+
+select distinct (count(distinct  ?work) as ?n) {
+?work rdf:type dbo:WrittenWork
+}
+
+# 508099
+
+###############################################
+
+PREFIX dbo: <http://dbpedia.org/ontology/>
+
+select distinct (count(distinct ?work) as ?n) {
+?work rdf:type dbo:Work
+}
+
+# 69112
+
+################################################
+
+PREFIX dbo: <http://dbpedia.org/ontology/>
+
+select distinct ?x {
+?x <http://purl.org/linguistics/gold/hypernym> <http://dbpedia.org/resource/Novel>
+}
+

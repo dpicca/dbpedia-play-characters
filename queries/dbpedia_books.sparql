@@ -1,0 +1,7 @@
+SELECT DISTINCT ?char ?work
+WHERE
+{
+  ?char a dbo:Person
+    ; dbo:series|^dbo:series|dbo:firstAppearance|dbo:lastAppearance ?work
+  . ?work a dbo:WrittenWork
+}

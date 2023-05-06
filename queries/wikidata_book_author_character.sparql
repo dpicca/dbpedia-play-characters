@@ -1,0 +1,23 @@
+
+SELECT DISTINCT *
+WHERE
+{
+  ?book_id wdt:P31 wd:Q7725634 .
+  OPTIONAL {
+     ?book_id rdfs:label ?book filter (lang(?book) = "en").
+   }
+  ?book_id wdt:P50 ?author_id
+   OPTIONAL {
+     ?author_id rdfs:label ?author filter (lang(?author) = "en").
+   }
+  OPTIONAL {
+    ?book_id wdt:P674 ?character_id   .
+    OPTIONAL {
+     ?character_id rdfs:label ?character filter (lang(?character) = "en").
+     }
+    OPTIONAL {
+    ?character_id wdt:P5800 ?role_id .
+     ?role_id rdfs:label ?role filter (lang(?role) = "en").
+    }
+    }
+ }

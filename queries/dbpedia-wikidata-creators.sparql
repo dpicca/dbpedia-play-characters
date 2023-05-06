@@ -1,0 +1,11 @@
+PREFIX dbc: <http://dbpedia.org/resource/Category:>
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbr: <http://dbpedia.org/resource/>
+
+SELECT DISTINCT ?a ?wikidata
+WHERE {
+    ?a a dbo:Person.
+    [] dbo:creator ?a. # This property usually goes together with the category
+    ?a owl:sameAs ?wikidata.
+    FILTER( strstarts(STR(?wikidata), "http://wikidata.dbpedia.org/resource/"))
+}

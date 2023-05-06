@@ -1,0 +1,4 @@
+select ?author
+where {
+ ?author a dbo:Writer
+}
